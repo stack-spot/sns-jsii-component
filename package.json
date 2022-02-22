@@ -1,6 +1,6 @@
 {
-  "name": "@stackspot/cdk-env-sns",
-  "version": "0.1.0",
+  "name": "sns-app-jsii-component",
+  "version": "0.1.1",
   "description": "Component to manage SNS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -21,6 +21,10 @@
     "url": "https://github.com/stack-spot/sns-env-jsii-component.git"
   },
   "license": "MIT",
+  "dependencies": {
+    "aws-cdk-lib": "^2.10.0",
+    "constructs": "^10.0.0"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
@@ -33,7 +37,7 @@
     "typescript": "~3.9.7"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "2.10.0",
+    "aws-cdk-lib": "^2.10.0",
     "constructs": "^10.0.0"
   },
   "stability": "stable",
