@@ -1,0 +1,51 @@
+{
+  "name": "@stackspot/cdk-env-sns",
+  "version": "0.1.0",
+  "description": "Component to manage SNS",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "jsii --verbose --fail-on-warnings",
+    "build:watch": "npm run build -- --watch",
+    "package:dotnet": "jsii-pacmak --target=dotnet --verbose --validate-assemblies",
+    "package:js": "jsii-pacmak --target=js --verbose --validate-assemblies",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": {
+    "name": "StackSpot",
+    "email": "contact@stackspot.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stack-spot/sns-env-jsii-component.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "aws-cdk-lib": "2.10.0",
+    "constructs": "^10.0.0",
+    "jest": "^26.4.2",
+    "jsii": "^1.54.0",
+    "jsii-pacmak": "^1.54.0",
+    "ts-jest": "^26.2.0",
+    "typescript": "~3.9.7"
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "2.10.0",
+    "constructs": "^10.0.0"
+  },
+  "stability": "stable",
+  "jsii": {
+    "outdir": "dist",
+    "versionFormat": "full",
+    "targets": {
+      "dotnet": {
+        "namespace": "StackSpot.Env.Sns",
+        "packageId": "StackSpot.Env.Sns",
+        "iconUrl": "https://www.nuget.org/profiles/stackspot/avatar"
+      }
+    }
+  }
+}
