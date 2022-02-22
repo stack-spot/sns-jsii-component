@@ -5,32 +5,29 @@ export interface SnsCreateTopicProps {
   readonly contentBasedDeduplication?: boolean;
   readonly displayName?: string;
   readonly fifo?: boolean;
-  readonly topicName: string; 
+  readonly topicName: string;
 }
 export class SnsAppJsiiComponent extends Construct {
-
   constructor(scope: Construct, id: string) {
     super(scope, id);
   }
 
-  public createTopic(props:SnsCreateTopicProps) {
+  public createTopic(props:SnsCreateTopicProps): void {
     new sns.Topic(this, 'Topic', {
       displayName: props.displayName,
       fifo: props.fifo,
       topicName: props.topicName,
-      contentBasedDeduplication: props.contentBasedDeduplication
+      contentBasedDeduplication: props.contentBasedDeduplication,
     });
   }
 
-  public subscription(arn:string, protocol:sns.SubscriptionProtocol) {
-    const topic = sns.Topic.fromTopicArn(this,'id', arn);
+  public subscription(arn:string, protocol:sns.SubscriptionProtocol, endpoint: string): void {
+    const topic = sns.Topic.fromTopicArn(this, 'id', arn);
 
     new sns.Subscription(this, 'Subscription', {
       topic,
-      endpoint: arn,
-      protocol: protocol
+      endpoint,
+      protocol,
     });
   }
-
 }
-

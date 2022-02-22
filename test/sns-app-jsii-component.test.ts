@@ -1,18 +1,28 @@
 // import * as cdk from 'aws-cdk-lib';
 // import { Template } from 'aws-cdk-lib/assertions';
-// import * as SnsAppJsiiComponent from '../lib/index';
+// import * as sns from '../lib/index';
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/index.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//   const stack = new cdk.Stack(app, "TestStack");
-//   // WHEN
-//   new SnsAppJsiiComponent.SnsAppJsiiComponent(stack, 'MyTestConstruct');
-//   // THEN
-//   const template = Template.fromStack(stack);
+test('SNS topic created', () => {
+  // const app = new cdk.App();
+  // const stack = new cdk.Stack(app, 'TestStack');
+  // const component = new sns.SnsAppJsiiComponent(stack, 'SNS');
+  // component.createTopic({
+  //  displayName: 'topic', fifo: false, contentBasedDeduplication: false, topicName: 'topicName',
+  // });
+  // const template = Template.fromStack(stack);
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+  // template.hasResource('AWS::SNS::Topic', {});
 });
+
+// test('SNS subscription created', () => {
+//  const app = new cdk.App();
+//  const stack = new cdk.Stack(app, 'TestStack');
+//  const component = new sns.SnsAppJsiiComponent(stack, 'SNS');
+//  component.createTopic({
+//    displayName: 'topic', fifo: false, contentBasedDeduplication: false, topicName: 'topicName',
+//  });
+//  component.subscription('arn:aws:sns:us-east-1:123456789012:aws-sns-TestTopic', cdk.aws_sns.SubscriptionProtocol.HTTPS, 'https://www.example.com');
+//  const template = Template.fromStack(stack);
+//
+//  template.hasResource('AWS::SNS::Subscription', {});
+// });
