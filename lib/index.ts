@@ -1,5 +1,7 @@
 import { Construct } from 'constructs';
 import * as sns from 'aws-cdk-lib/aws-sns';
+import * as subs from 'aws-cdk-lib/aws-sns-subscriptions';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
 
 export interface SnsCreateTopicProps {
   readonly contentBasedDeduplication?: boolean;
@@ -8,12 +10,9 @@ export interface SnsCreateTopicProps {
   readonly topicName: string;
 }
 export class SnsAppJsiiComponent extends Construct {
-  constructor(scope: Construct, id: string) {
+  constructor(scope: Construct, id: string, props:SnsCreateTopicProps) {
     super(scope, id);
-  }
-
-  public createTopic(props:SnsCreateTopicProps): void {
-    new sns.Topic(this, 'Topic', {
+    new sns.Topic(this, 'topic-'.concat(props.topicName), {
       displayName: props.displayName,
       fifo: props.fifo,
       topicName: props.topicName,
@@ -21,13 +20,8 @@ export class SnsAppJsiiComponent extends Construct {
     });
   }
 
-  public subscription(arn:string, protocol:sns.SubscriptionProtocol, endpoint: string): void {
-    const topic = sns.Topic.fromTopicArn(this, 'id', arn);
-
-    new sns.Subscription(this, 'Subscription', {
-      topic,
-      endpoint,
-      protocol,
-    });
+  public static addSubscription(scope: Construct, topicArn: string, fn:lambda.IFunction): void {
+    const topic = sns.Topic.fromTopicArn(scope, 'topic-'.concat(topicArn.split(':').slice(-1)[0]), topicArn);
+    topic.addSubscription(new subs.LambdaSubscription(fn));
   }
 }
