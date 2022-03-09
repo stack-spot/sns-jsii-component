@@ -4,9 +4,7 @@ import * as subs from 'aws-cdk-lib/aws-sns-subscriptions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 
 export interface SnsCreateTopicProps {
-  readonly contentBasedDeduplication?: boolean;
   readonly displayName?: string;
-  readonly fifo?: boolean;
   readonly topicName: string;
 }
 export class SnsAppJsiiComponent extends Construct {
@@ -14,9 +12,8 @@ export class SnsAppJsiiComponent extends Construct {
     super(scope, id);
     new sns.Topic(this, 'topic-'.concat(props.topicName), {
       displayName: props.displayName,
-      fifo: props.fifo,
+      fifo: false,
       topicName: props.topicName,
-      contentBasedDeduplication: props.contentBasedDeduplication,
     });
   }
 
