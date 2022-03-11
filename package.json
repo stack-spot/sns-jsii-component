@@ -1,6 +1,6 @@
 {
   "name": "@stackspot/cdk-env-sns",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "Component to manage SNS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -24,6 +24,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@stackspot/cdk-core": "^0.1.2",
     "aws-cdk-lib": "^2.10.0",
     "constructs": "^10.0.0"
   },
