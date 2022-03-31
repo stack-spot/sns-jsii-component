@@ -5,9 +5,17 @@
 .cdk.staging
 cdk.out
 
+# GitHub
+.github/workflows
 
-# Exclude jsii outdir
+# Jest
+coverage
+
+# jsii
 dist
-
-# Include .jsii
 !.jsii
+
+# STK CLI
+.template
+stages
+stk.yaml
